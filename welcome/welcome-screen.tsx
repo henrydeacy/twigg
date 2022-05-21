@@ -1,13 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export function Welcome({ navigation }: any) {
   return (
     <View style={styles.container}>
       <Text>Welcome to toda!</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-        Get started
-      </TouchableOpacity>
+      <Button
+        title="Get started"
+        onPress={() => navigation.navigate("Profile")}
+      />
       <StatusBar style="auto" />
     </View>
   );
