@@ -5,9 +5,16 @@ import { Button, StyleSheet, Text, View } from "react-native";
 export function Profile({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <Button title="Photos" />
-      <Button title="About you" />
-      <Button title="About me" />
+      <Button title="Photos" onPress={() => navigation.navigate("Photos")} />
+      <Button
+        title="About you"
+        onPress={() => navigation.navigate("About you")}
+      />
+      <Button
+        title="About me"
+        onPress={() => navigation.navigate("About me")}
+      />
+      <StatusBar style="auto" />
     </View>
   );
 }
