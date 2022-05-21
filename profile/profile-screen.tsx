@@ -1,10 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 export function Profile({ navigation }: any) {
   return (
     <View style={styles.container}>
       <Text>Profile</Text>
+      <Button title="Photos" />
+      <Button title="About you" />
+      <Button title="About me" />
       <StatusBar style="auto" />
     </View>
   );
