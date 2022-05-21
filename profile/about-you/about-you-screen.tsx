@@ -1,11 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 
 export function AboutYou({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <Button title="About you" />
+      <Text>
+        Answer some questions to let potential matches know whether they're your
+        type!
+      </Text>
       <StatusBar style="auto" />
     </View>
   );

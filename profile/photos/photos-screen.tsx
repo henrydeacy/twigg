@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 
 export function Photos({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <Button title="Photos" />
+      <Text>Add some photos of yourself here:</Text>
       <StatusBar style="auto" />
     </View>
   );
