@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, StyleSheet, Image, Button, ScrollView } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import PhotoUpload from "react-native-photo-upload";
 
 export function Photos({ navigation }: any) {
@@ -16,12 +23,14 @@ export function Photos({ navigation }: any) {
           }}
         />
       ))}
-      <Button
+      <TouchableOpacity
         onPress={() => {
           setPhotos([...photos, true]);
         }}
-        title="+"
-      />
+        style={styles.plus}
+      >
+        +
+      </TouchableOpacity>
 
       <StatusBar style="auto" />
     </ScrollView>
@@ -44,5 +53,10 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderRadius: 4,
     margin: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  plus: {
+    marginBottom: 10,
   },
 });
