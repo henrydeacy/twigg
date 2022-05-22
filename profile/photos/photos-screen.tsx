@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image, Button } from "react-native";
 import PhotoUpload from "react-native-photo-upload";
 
 export function Photos({ navigation }: any) {
@@ -16,6 +16,13 @@ export function Photos({ navigation }: any) {
           }}
         />
       ))}
+      <Button
+        onPress={() => {
+          setPhotos([...photos, true]);
+        }}
+        title="+"
+      />
+
       <StatusBar style="auto" />
     </View>
   );
