@@ -16,7 +16,7 @@ export function Photos({ navigation }: any) {
       width: 100,
       height: 100,
       padding: 10,
-      border: "solid",
+      border: "2px solid",
       borderColor: "#000",
       borderRadius: 4,
       margin: 10,
