@@ -7,32 +7,37 @@ import {
   Button,
   ScrollView,
   View,
+  FlatList,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export function Photos({ navigation }: any) {
   const [photos, setPhotos] = useState([true, true, true]);
+  const renderItem = () => (
+    <Image
+      style={styles.photo}
+      source={{
+        uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
+      }}
+    />
+  );
   return (
-    <ScrollView style={styles.container}>
-      <Text>Add some photos of yourself here:</Text>
-      {photos.map((photo) => (
-        <Image
-          style={styles.photo}
-          source={{
-            uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
-          }}
-        />
-      ))}
-      <View style={styles.plus}>
-        <Button
-          onPress={() => {
-            setPhotos([...photos, true]);
-          }}
-          title="+"
-        />
-      </View>
+    <SafeAreaView>
+      <ScrollView style={styles.container}>
+        <Text>Add some photos of yourself here:</Text>
+        <FlatList data={photos} renderItem={renderItem} />
+        <View style={styles.plus}>
+          <Button
+            onPress={() => {
+              setPhotos([...photos, true]);
+            }}
+            title="+"
+          />
+        </View>
 
-      <StatusBar style="auto" />
-    </ScrollView>
+        <StatusBar style="auto" />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
