@@ -4,10 +4,20 @@ import { Text, StyleSheet, View, Image } from "react-native";
 import PhotoUpload from "react-native-photo-upload";
 
 export function Photos({ navigation }: any) {
+  const styles = StyleSheet.create({
+    container: {
+      paddingTop: 50,
+    },
+    photo: {
+      width: 66,
+      height: 58,
+    },
+  });
   return (
     <View style={styles.container}>
       <Text>Add some photos of yourself here:</Text>
       <Image
+        style={styles.photo}
         source={{
           uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
         }}
