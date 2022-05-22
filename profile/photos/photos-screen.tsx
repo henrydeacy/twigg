@@ -24,17 +24,15 @@ export function Photos({ navigation }: any) {
   return (
     <SafeAreaView style={styles.container}>
       <Text>Add some photos of yourself here:</Text>
-      <ScrollView>
-        <FlatList data={photos} renderItem={renderItem} />
-        <View style={styles.plus}>
-          <Button
-            onPress={() => {
-              setPhotos([...photos, true]);
-            }}
-            title="+"
-          />
-        </View>
-      </ScrollView>
+      <FlatList data={photos} renderItem={renderItem} />
+      <View style={styles.plus}>
+        <Button
+          onPress={() => {
+            setPhotos([...photos, true]);
+          }}
+          title="+"
+        />
+      </View>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
