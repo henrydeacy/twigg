@@ -20,7 +20,6 @@ export function Photos({ navigation }: any) {
   return (
     <View style={styles.container}>
       <Text>Add some photos of yourself here:</Text>
-      <PhotoUpload />
       <Image
         style={styles.photo}
         source={{
