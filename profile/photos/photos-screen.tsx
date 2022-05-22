@@ -62,10 +62,11 @@ const styles = StyleSheet.create({
   },
   plus: {
     marginBottom: 10,
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
     fontSize: 20,
-    color: "#fff",
+    fontStyle: { color: "#fff" },
     backgroundColor: "#29dfc1",
+    borderRadius: 8,
   },
 });
