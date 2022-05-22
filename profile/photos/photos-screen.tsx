@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Image, Button } from "react-native";
+import { Text, StyleSheet, Image, Button, ScrollView } from "react-native";
 import PhotoUpload from "react-native-photo-upload";
 
 export function Photos({ navigation }: any) {
   const [photos, setPhotos] = useState([true, true, true]);
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text>Add some photos of yourself here:</Text>
       {photos.map((photo) => (
         <Image
@@ -24,7 +24,7 @@ export function Photos({ navigation }: any) {
       />
 
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
   );
 }
 
