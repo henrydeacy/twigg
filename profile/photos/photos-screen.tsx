@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export function Photos({ navigation }: any) {
-  const [photos, setPhotos] = useState([true, true, true]);
+  const [photos, setPhotos] = useState<boolean[]>();
   const renderItem = () => (
     <Image
       style={styles.photo}
@@ -33,7 +33,7 @@ export function Photos({ navigation }: any) {
         <View style={styles.plus}>
           <Button
             onPress={() => {
-              setPhotos([...photos, true]);
+              photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
             title="+"
           />
