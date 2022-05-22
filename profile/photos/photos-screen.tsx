@@ -62,5 +62,7 @@ const styles = StyleSheet.create({
   },
   plus: {
     marginBottom: 10,
+    width: 50,
+    height: 50,
   },
 });
