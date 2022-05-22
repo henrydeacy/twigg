@@ -7,12 +7,12 @@ export function Photos({ navigation }: any) {
   return (
     <View style={styles.container}>
       <Text>Add some photos of yourself here:</Text>
-      <StatusBar style="auto" />
       <Image
         source={{
-          uri: "https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg",
+          uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
         }}
       />
+      <StatusBar style="auto" />
     </View>
   );
 }
