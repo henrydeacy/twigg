@@ -23,8 +23,8 @@ export function Photos({ navigation }: any) {
   );
   return (
     <SafeAreaView style={styles.container}>
+      <Text>Add some photos of yourself here:</Text>
       <ScrollView>
-        <Text>Add some photos of yourself here:</Text>
         <FlatList data={photos} renderItem={renderItem} />
         <View style={styles.plus}>
           <Button
@@ -34,9 +34,8 @@ export function Photos({ navigation }: any) {
             title="+"
           />
         </View>
-
-        <StatusBar style="auto" />
       </ScrollView>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
