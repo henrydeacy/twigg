@@ -29,14 +29,16 @@ export function Photos({ navigation }: any) {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
-      <View style={styles.plus}>
-        <Button
-          onPress={() => {
-            setPhotos([...photos, true]);
-          }}
-          title="+"
-        />
-      </View>
+      {photos.length < 5 && (
+        <View style={styles.plus}>
+          <Button
+            onPress={() => {
+              setPhotos([...photos, true]);
+            }}
+            title="+"
+          />
+        </View>
+      )}
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -51,8 +53,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   photo: {
-    width: 100,
-    height: 100,
+    width: 300,
+    height: 300,
     borderRadius: 4,
     margin: 10,
     alignItems: "center",
