@@ -5,10 +5,7 @@ import { Text, StyleSheet, View } from "react-native";
 export function AboutMe({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <Text>
-        Answer some questions so that potential matches can learn a bit about
-        you!
-      </Text>
+      <Text>Let people learn a bit about you!</Text>
       <StatusBar style="auto" />
     </View>
   );
