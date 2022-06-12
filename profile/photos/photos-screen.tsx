@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     height: 30,
     fontSize: 20,
     fontStyle: { color: "#fff" },
-    backgroundColor: "#29dfc1",
+    backgroundColor: "#225555",
     borderRadius: 8,
     display: 'flex',
     alignItems: "center"
