@@ -35,7 +35,7 @@ export function Photos({ navigation }: any) {
               photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
        
-          ><Text style={styles.textAdd}>Add</Text></TouchableOpacity>
+          ><Text style={styles.plusText}>Add</Text></TouchableOpacity>
         </View>
       )}
       <StatusBar style="auto" />
@@ -61,11 +61,15 @@ const styles = StyleSheet.create({
   },
   plus: {
     marginBottom: 30,
-    width: 30,
+    padding: 5,
+    width: 50,
     height: 30,
     fontSize: 20,
     fontStyle: { color: "#fff" },
     backgroundColor: "#29dfc1",
     borderRadius: 8,
   },
+  plusText:
+  { color:"#fff",
+    textAlignVertical: 'center'}
 });
