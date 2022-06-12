@@ -9,16 +9,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { PhotoComponent } from "./photo-component";
 
 export function Photos({ navigation }: any) {
   const [photos, setPhotos] = useState<boolean[]>();
   const renderItem = () => (
-    <Image
-      style={styles.photo}
-      source={{
-        uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
-      }}
-    />
+<PhotoComponent/>
   );
   return (
     <SafeAreaView style={styles.container}>
