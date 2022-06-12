@@ -30,7 +30,7 @@ export function Photos({ navigation }: any) {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
-      {(!photos || photos.length < 5) && (
+      {/* {(!photos || photos.length < 5) && (
         <View style={styles.plus}>
           <TouchableOpacity
             onPress={() => {
@@ -39,7 +39,7 @@ export function Photos({ navigation }: any) {
        
           >Add</TouchableOpacity>
         </View>
-      )}
+      )} */}
       <StatusBar style="auto" />
     </SafeAreaView>
   );
