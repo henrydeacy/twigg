@@ -4,8 +4,6 @@ import {
   Text,
   StyleSheet,
   Image,
-  Button,
-  ScrollView,
   View,
   FlatList,
   TouchableOpacity,
@@ -30,16 +28,16 @@ export function Photos({ navigation }: any) {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
-      {/* {(!photos || photos.length < 5) && (
+      {(!photos || photos.length < 5) && (
         <View style={styles.plus}>
           <TouchableOpacity
             onPress={() => {
               photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
        
-          >Add</TouchableOpacity>
+          ><Text>Add</Text></TouchableOpacity>
         </View>
-      )} */}
+      )}
       <StatusBar style="auto" />
     </SafeAreaView>
   );
