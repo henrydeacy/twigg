@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   plus: {
-    marginBottom: 10,
+    marginBottom: 30,
     width: 30,
     height: 30,
     fontSize: 20,
