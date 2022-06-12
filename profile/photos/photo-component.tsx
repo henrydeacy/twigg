@@ -9,9 +9,13 @@ import {
 
 } from "react-native";
 
-export function PhotoComponent({ navigation }: any) {
+interface PhotoComponentProps {
+    photos: boolean[] | undefined
+    setPhotos: React.Dispatch<React.SetStateAction<boolean[] | undefined>>
+}
+
+export function PhotoComponent (props: PhotoComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
-    const width = imagePressed ? 200: 150
   return (
     <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
       style={styles.photo}
@@ -19,7 +23,7 @@ export function PhotoComponent({ navigation }: any) {
         uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
       }}
     /></TouchableOpacity>{imagePressed && <View style={styles.delete}>
-    <TouchableOpacity><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
+    <TouchableOpacity onPress={props.photos ? ()=> {props.setPhotos(undefined)}}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
   </View>}</View>
   );
 }
