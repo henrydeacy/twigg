@@ -14,7 +14,7 @@ import { PhotoComponent } from "./photo-component";
 export function Photos({ navigation }: any) {
   const [photos, setPhotos] = useState<boolean[]>();
   const renderItem = () => (
-<PhotoComponent/>
+<PhotoComponent photos={photos} setPhotos={setPhotos}/>
   );
   return (
     <SafeAreaView style={styles.container}>
