@@ -8,6 +8,7 @@ import {
   ScrollView,
   View,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -31,12 +32,12 @@ export function Photos({ navigation }: any) {
       />
       {(!photos || photos.length < 5) && (
         <View style={styles.plus}>
-          <Button
+          <TouchableOpacity
             onPress={() => {
               photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
-            title="+"
-          />
+       
+          >Add</TouchableOpacity>
         </View>
       )}
       <StatusBar style="auto" />
