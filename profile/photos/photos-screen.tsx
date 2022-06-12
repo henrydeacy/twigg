@@ -35,7 +35,7 @@ export function Photos({ navigation }: any) {
               photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
        
-          ><Text>Add</Text></TouchableOpacity>
+          ><Text style={styles.textAdd}>Add</Text></TouchableOpacity>
         </View>
       )}
       <StatusBar style="auto" />
