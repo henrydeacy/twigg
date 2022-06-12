@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   Text,
   StyleSheet,
-  Image,
   View,
   FlatList,
   TouchableOpacity,
