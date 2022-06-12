@@ -68,6 +68,8 @@ const styles = StyleSheet.create({
     fontStyle: { color: "#fff" },
     backgroundColor: "#29dfc1",
     borderRadius: 8,
+    display: 'flex',
+    alignItems: "center"
   },
   plusText:
   { color:"#fff",
