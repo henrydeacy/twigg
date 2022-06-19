@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 const customTextProps = {
   style: {
     fontSize: 16,
-    fontFamily: 'Nexa Thin',
+    fontFamily: 'Helvetica-Light',
     color: colors.black
   }
 };

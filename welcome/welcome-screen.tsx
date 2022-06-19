@@ -19,7 +19,7 @@ export function Welcome({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.pink,
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },
