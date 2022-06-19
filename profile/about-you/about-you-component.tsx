@@ -6,8 +6,10 @@ import {
   Image,
   TouchableOpacity,
   View,
+  TextInput,
 
 } from "react-native";
+import { Menu } from "react-native-paper";
 import { colors } from "../../colors";
 
 interface AboutYouComponentProps {
@@ -16,16 +18,25 @@ interface AboutYouComponentProps {
 }
 
 export function AboutYouComponent (props: AboutYouComponentProps) {
-    const [imagePressed, setImagePressed] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const openMenu = () => {setIsOpen(true)}
+  const closeMenu = () => {setIsOpen(false)}
+  const [selectedQuestion, setSelectedQuestion] = useState('Select a question')
   return (
-    <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
-      style={styles.aboutYou}
-      source={{
-        uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
-      }}
-    /></TouchableOpacity>{imagePressed && <View style={styles.delete}>
-    <TouchableOpacity onPress={props.aboutYous ? ()=> {props.setAboutYous(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
-  </View>}</View>
+    <View style={styles.container}>
+    <Menu
+    style={styles.questionBar}
+      visible={isOpen}
+      onDismiss={closeMenu}
+      anchor={<TouchableOpacity style={styles.questionBar}onPress={
+       openMenu}><Text>{selectedQuestion}</Text></TouchableOpacity>}>
+      <Menu.Item style={styles.questionBar} onPress={() => {setSelectedQuestion("Question1"); closeMenu()}} title="Question1" />
+      <Menu.Item style={styles.questionBar} onPress={() => {setSelectedQuestion("Question2"); closeMenu()}} title="Question2" />
+      <Menu.Item style={styles.questionBar} onPress={() => {setSelectedQuestion("Question3"); closeMenu()}} title="Question3" />
+    </Menu>
+  <TextInput multiline={true} style={styles.aboutYou}
+  placeholder="Add your answer here"/>
+</View>
   );
 }
 
@@ -41,26 +52,20 @@ const styles = StyleSheet.create({
   },
   aboutYou: {
     width: 360,
-    height: 360,
+    height: 320,
     borderRadius: 4,
     margin: 10,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.white
   },
-  delete: {
-    marginBottom: 30,
-    padding: 5,
-    width: 50,
-    height: 30,
-    fontSize: 20,
-    fontStyle: { color: colors.white },
-    backgroundColor: colors.pink,
-    borderRadius: 8,
-    display: 'flex',
-    alignItems: "center",
-    position: "absolute"
-  },
- deleteText:
-  { color: colors.white,
-    textAlignVertical: 'center'}
+questionBar: {
+  backgroundColor: colors.white,
+  width: 360,
+  height: 30,
+  margin: 10,
+  borderRadius: 4,
+  display: "flex",
+  alignItems: "center",
+}
 });

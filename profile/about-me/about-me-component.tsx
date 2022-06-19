@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import {Button, Divider, Menu} from 'react-native-paper'
+import { Menu} from 'react-native-paper'
 import { colors } from "../../colors";
 
 interface AboutMeComponentProps {
