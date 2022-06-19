@@ -16,11 +16,11 @@ interface AboutMeComponentProps {
 export function AboutMeComponent (props: AboutMeComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
     const aboutMeQuestions = [
-       {"value": "aboutMeQuestion1"}, { "value": "aboutMeQuestion2"}, { "value": "aboutMeQuestion3"}
+       {value: "aboutMeQuestion1"}, { value: "aboutMeQuestion2"}, { value: "aboutMeQuestion3"}
     ]
   return (
     <View style={styles.container}>
-      {/* <Dropdown data={aboutMeQuestions} label="Pick a question"/> */}
+      <Dropdown data={aboutMeQuestions} label="Pick a question"/>
       <TextInput multiline={true} style={styles.aboutMe}
     placeholder="Add your answer here"/>
     </View>
