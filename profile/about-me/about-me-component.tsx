@@ -20,7 +20,7 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
     ]
   return (
     <View style={styles.container}>
-      <Dropdown data={aboutMeQuestions}/>
+      <Dropdown data={aboutMeQuestions} label="Pick a question"/>
       <TextInput multiline={true} style={styles.aboutMe}
     placeholder="Add your answer here"/>
     </View>
