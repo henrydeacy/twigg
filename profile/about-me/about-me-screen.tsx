@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, FlatList, TouchableOpacity, SafeAreaView } from "react-native";
 import { colors } from "../../colors";
 import { AboutMeComponent } from "./about-me-component";
 
@@ -11,6 +11,7 @@ export function AboutMe({ navigation }: any) {
   );
   return (
     <View style={styles.container}>
+    <SafeAreaView>
       <Text>Let people learn a bit about you!</Text>
       <FlatList
         data={aboutMes}
@@ -28,6 +29,7 @@ export function AboutMe({ navigation }: any) {
         </View>
       )}
       <StatusBar style="auto" />
+      </SafeAreaView>
     </View>
   );
 }

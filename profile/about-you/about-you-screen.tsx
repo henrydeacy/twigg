@@ -10,7 +10,8 @@ export function AboutYou({ navigation }: any) {
 <AboutYouComponent aboutYous={aboutYous} setAboutYous={setAboutYous}/>
 );
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <SafeAreaView>
       <Text>Let potential matches know whether they're your type!</Text>
       <FlatList
         data={aboutYous}
@@ -28,7 +29,7 @@ export function AboutYou({ navigation }: any) {
         </View>
       )}
       <StatusBar style="auto" />
-    </SafeAreaView>
+    </SafeAreaView></View>
   );
 }
 
