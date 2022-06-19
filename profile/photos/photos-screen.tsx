@@ -17,8 +17,7 @@ export function Photos({ navigation }: any) {
 <PhotoComponent photos={photos} setPhotos={setPhotos}/>
   );
   return (
-    <View style={styles.container}>
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text>Add some photos of yourself here:</Text>
       <FlatList
         data={photos}
@@ -36,7 +35,7 @@ export function Photos({ navigation }: any) {
         </View>
       )}
       <StatusBar style="auto" />
-    </SafeAreaView></View>
+    </SafeAreaView>
   );
 }
 

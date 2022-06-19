@@ -10,8 +10,7 @@ export function AboutMe({ navigation }: any) {
 <AboutMeComponent aboutMes={aboutMes} setAboutMes={setAboutMes}/>
   );
   return (
-    <View style={styles.container}>
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text>Let people learn a bit about you!</Text>
       <FlatList
         data={aboutMes}
@@ -30,7 +29,6 @@ export function AboutMe({ navigation }: any) {
       )}
       <StatusBar style="auto" />
       </SafeAreaView>
-    </View>
   );
 }
 
