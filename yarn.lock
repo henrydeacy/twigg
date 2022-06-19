@@ -1786,6 +1786,20 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-native-global-props@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-global-props/-/react-native-global-props-1.1.1.tgz#2d4f3762ee5d97b37de5a9c0949aabb4106f922e"
+  integrity sha512-u7jCZ9OUPFfNBcpDJHvHenm9r+K6a/wiKdpoLJTaUocLueN5hS5eGcLlFdUN/SDfBLVRNAkPRV1ZDFK1GyRBOw==
+  dependencies:
+    "@types/react-native" "^0.65"
+
+"@types/react-native@^0.65":
+  version "0.65.22"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.65.22.tgz#58eaf2f64eb37fcb5fa9725547a8e043c4ecbc07"
+  integrity sha512-3M5ukXrxuoMHlH6pF+HVcudX3SoUUynmUJiTZqPPSY/wDlFVOfbf0P21F7gkXeHbsZ6RbZfoQfQMR6rs7xsPDA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native@~0.66.13":
   version "0.66.18"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.66.18.tgz#924fdbf413047e7ac2c18aead60142345814dede"
@@ -1793,10 +1807,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "18.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.9.tgz#d6712a38bd6cd83469603e7359511126f122e878"
-  integrity sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==
+"@types/react@*", "@types/react@17.0.43":
+  version "17.0.43"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.43.tgz#4adc142887dd4a2601ce730bc56c3436fdb07a55"
+  integrity sha512-8Q+LNpdxf057brvPu1lMtC5Vn7J119xrP1aq4qiaefNioQUYANF/CYeK4NsKorSZyUGJ66g0IM+4bbjwx45o2A==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -5885,6 +5899,11 @@ react-native-fs@^2.20.0, react-native-fs@^2.5.1:
   dependencies:
     base-64 "^0.1.0"
     utf8 "^3.0.0"
+
+react-native-global-props@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-global-props/-/react-native-global-props-1.1.5.tgz#443e0ffc89d5402fa20ebedf37bcbca6d861c34d"
+  integrity sha512-QDeAdRel6zyJfbgyFxZi9QXZe78OdlANxJae0rJn76uTqdt/A+iWBVjJy3NmaN/fpKy0uV0HhW6Hu4xM0QCisQ==
 
 react-native-gradle-plugin@^0.0.6:
   version "0.0.6"
