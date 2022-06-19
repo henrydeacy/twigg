@@ -23,7 +23,6 @@ export function AboutMe({ navigation }: any) {
             onPress={() => {
               aboutMes ? setAboutMes([...aboutMes, true]) : setAboutMes([true]);
             }}
-       
           ><Text style={styles.plusText}>Add</Text></TouchableOpacity>
         </View>
       )}

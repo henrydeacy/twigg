@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
   TextInput,
+  TouchableOpacity,
 } from "react-native";
 import {Button, Divider, Menu} from 'react-native-paper'
 import { colors } from "../../colors";
@@ -22,18 +23,18 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
         <Menu
           visible={false}
           onDismiss={closeMenu}
-          anchor={<Button>Show menu</Button>}>
+          anchor={<TouchableOpacity onPress={
+           openMenu}/>}>
           <Menu.Item onPress={() => {}} title="Item 1" />
           <Menu.Item onPress={() => {}} title="Item 2" />
           <Divider />
           <Menu.Item onPress={() => {}} title="Item 3" />
         </Menu>
       <TextInput multiline={true} style={styles.aboutMe}
-    placeholder="Add your answer here"/>
+      placeholder="Add your answer here"/>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
