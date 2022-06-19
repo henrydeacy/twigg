@@ -21,7 +21,7 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
   return (
     <View style={styles.container}>
         <Menu
-          visible={false}
+          visible={true}
           onDismiss={closeMenu}
           anchor={<TouchableOpacity onPress={
            openMenu}/>}>
