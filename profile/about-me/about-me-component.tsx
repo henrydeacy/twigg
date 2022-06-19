@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   View,
+  TextInputBase,
 
 } from "react-native";
 import { colors } from "../../colors";
@@ -18,14 +19,8 @@ interface AboutMeComponentProps {
 export function AboutMeComponent (props: AboutMeComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
   return (
-    <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
-      style={styles.aboutMe}
-      source={{
-        uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
-      }}
-    /></TouchableOpacity>{imagePressed && <View style={styles.delete}>
-    <TouchableOpacity onPress={props.aboutMes ? ()=> {props.setAboutMes(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
-  </View>}</View>
+    <View style={styles.container}><TextInputBase></TextInputBase>
+    </View>
   );
 }
 
