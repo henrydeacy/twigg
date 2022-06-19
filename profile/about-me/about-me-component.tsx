@@ -5,7 +5,7 @@ import {
   View,
   TextInput,
 } from "react-native";
-import { Dropdown } from 'react-native-material-dropdown';
+import {Button, Divider, Menu} from 'react-native-paper'
 import { colors } from "../../colors";
 
 interface AboutMeComponentProps {
@@ -14,13 +14,20 @@ interface AboutMeComponentProps {
 }
 
 export function AboutMeComponent (props: AboutMeComponentProps) {
-    const [imagePressed, setImagePressed] = useState(false)
-    const aboutMeQuestions = [
-       {value: "aboutMeQuestion1"}, { value: "aboutMeQuestion2"}, { value: "aboutMeQuestion3"}
-    ]
+    const [isOpen, setIsOpen] = useState(false)
+    const openMenu = () => {setIsOpen(true)}
+    const closeMenu = () => {setIsOpen(false)}
   return (
     <View style={styles.container}>
-      <Dropdown data={aboutMeQuestions} label="Pick a question"/>
+        <Menu
+          visible={true}
+          onDismiss={closeMenu}
+          anchor={<Button onPress={openMenu}>Show menu</Button>}>
+          <Menu.Item onPress={() => {}} title="Item 1" />
+          <Menu.Item onPress={() => {}} title="Item 2" />
+          <Divider />
+          <Menu.Item onPress={() => {}} title="Item 3" />
+        </Menu>
       <TextInput multiline={true} style={styles.aboutMe}
     placeholder="Add your answer here"/>
     </View>
