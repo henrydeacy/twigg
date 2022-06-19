@@ -1,12 +1,8 @@
 
 import React, { useState } from "react";
 import {
-  Text,
   StyleSheet,
-  Image,
-  TouchableOpacity,
   View,
-  TextInputBase,
   TextInput,
 
 } from "react-native";
@@ -20,9 +16,9 @@ interface AboutMeComponentProps {
 export function AboutMeComponent (props: AboutMeComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
   return (
-    <View style={styles.container}><TextInput multiline={true}         style={styles.aboutMe}
-    placeholder="Add your answer here"
-    keyboardType="numeric"/>
+    <View style={styles.container}>
+      <TextInput multiline={true} style={styles.aboutMe}
+    placeholder="Add your answer here"/>
     </View>
   );
 }
