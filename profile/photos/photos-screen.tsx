@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
     flex: 1,
-    backgroundColor: colors.pink,
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },

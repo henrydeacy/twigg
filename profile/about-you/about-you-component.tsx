@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     height: 30,
     fontSize: 20,
     fontStyle: { color: colors.white },
-    backgroundColor: colors.green,
+    backgroundColor: colors.pink,
     borderRadius: 8,
     display: 'flex',
     alignItems: "center",

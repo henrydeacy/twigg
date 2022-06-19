@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
     flex: 1,
-    backgroundColor: colors.pink,
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     height: 30,
     fontSize: 20,
     fontStyle: { color: colors.white },
-    backgroundColor: colors.green,
+    backgroundColor: colors.blue,
     borderRadius: 8,
     display: 'flex',
     alignItems: "center"

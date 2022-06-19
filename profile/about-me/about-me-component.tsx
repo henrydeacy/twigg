@@ -33,7 +33,7 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.pink,
+    backgroundColor: colors.blue,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     height: 30,
     fontSize: 20,
     fontStyle: { color: colors.white },
-    backgroundColor: colors.green,
+    backgroundColor: colors.blue,
     borderRadius: 8,
     display: 'flex',
     alignItems: "center",

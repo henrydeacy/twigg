@@ -33,7 +33,7 @@ export function PhotoComponent (props: PhotoComponentProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.pink,
+    backgroundColor: colors.green,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -1,1 +1,1 @@
-export const colors = {green: "#27c37d", pink: "#dbd2d8", white: "#ffffff"}
+export const colors = {green: "#c4f8aa", pink: "#f8aae3", blue: "#afaaf8", white: "#ffffff"}
