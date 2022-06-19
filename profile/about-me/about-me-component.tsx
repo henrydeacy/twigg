@@ -20,7 +20,7 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
   return (
     <View style={styles.container}>
         <Menu
-          visible={true}
+          visible={false}
           onDismiss={closeMenu}
           anchor={<Button>Show menu</Button>}>
           <Menu.Item onPress={() => {}} title="Item 1" />
