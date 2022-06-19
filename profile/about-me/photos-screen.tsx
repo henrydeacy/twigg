@@ -1,27 +1,34 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, StyleSheet, View, FlatList, TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../colors";
-import { AboutYouComponent } from "./about-you-component";
+import { PhotoComponent } from "./photo-component";
 
-export function AboutYou({ navigation }: any) {
-  const [aboutYous, setAboutYous] = useState<boolean[]>();
+export function Photos({ navigation }: any) {
+  const [photos, setPhotos] = useState<boolean[]>();
   const renderItem = () => (
-<AboutYouComponent aboutYous={aboutYous} setAboutYous={setAboutYous}/>
-);
+<PhotoComponent photos={photos} setPhotos={setPhotos}/>
+  );
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Let potential matches know whether they're your type!</Text>
+      <Text>Add some photos of yourself here:</Text>
       <FlatList
-        data={aboutYous}
+        data={photos}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
-      {(!aboutYous || aboutYous.length < 5) && (
+      {(!photos || photos.length < 5) && (
         <View style={styles.plus}>
           <TouchableOpacity
             onPress={() => {
-              aboutYous ? setAboutYous([...aboutYous, true]) : setAboutYous([true]);
+              photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
        
           ><Text style={styles.plusText}>Add</Text></TouchableOpacity>

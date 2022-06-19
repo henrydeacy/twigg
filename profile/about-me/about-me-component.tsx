@@ -10,21 +10,21 @@ import {
 } from "react-native";
 import { colors } from "../../colors";
 
-interface PhotoComponentProps {
-    photos: boolean[] | undefined
-    setPhotos: React.Dispatch<React.SetStateAction<boolean[] | undefined>>
+interface AboutMeComponentProps {
+    aboutMes: boolean[] | undefined
+    setAboutMes: React.Dispatch<React.SetStateAction<boolean[] | undefined>>
 }
 
-export function PhotoComponent (props: PhotoComponentProps) {
+export function AboutMeComponent (props: AboutMeComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
   return (
     <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
-      style={styles.photo}
+      style={styles.aboutMe}
       source={{
         uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
       }}
     /></TouchableOpacity>{imagePressed && <View style={styles.delete}>
-    <TouchableOpacity onPress={props.photos ? ()=> {props.setPhotos(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
+    <TouchableOpacity onPress={props.aboutMes ? ()=> {props.setAboutMes(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
   </View>}</View>
   );
 }
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  photo: {
+  aboutMe: {
     width: 360,
     height: 360,
     borderRadius: 4,
