@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green,
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 4,
+    margin: 5
   },
   photo: {
     width: 360,

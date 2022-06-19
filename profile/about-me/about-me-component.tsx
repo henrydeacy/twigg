@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 4,
+    margin: 5
   },
   aboutMe: {
     width: 360,
@@ -42,6 +44,7 @@ const styles = StyleSheet.create({
     margin: 10,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.white
   },
   delete: {
     marginBottom: 30,

@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.pink,
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 4,
+    margin: 5
   },
   aboutYou: {
     width: 360,
