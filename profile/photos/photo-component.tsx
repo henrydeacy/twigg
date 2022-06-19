@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   photo: {
-    width: 150,
-    height: 150,
+    width: 400,
+    height: 400,
     borderRadius: 4,
     margin: 10,
     alignItems: "center",
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green,
     borderRadius: 8,
     display: 'flex',
-    alignItems: "center"
+    alignItems: "center",
+    position: "absolute"
   },
  deleteText:
   { color: colors.white,
