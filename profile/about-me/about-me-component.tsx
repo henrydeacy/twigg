@@ -22,7 +22,7 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
         <Menu
           visible={true}
           onDismiss={closeMenu}
-          anchor={<Button onPress={openMenu}>Show menu</Button>}>
+          anchor={<Button>Show menu</Button>}>
           <Menu.Item onPress={() => {}} title="Item 1" />
           <Menu.Item onPress={() => {}} title="Item 2" />
           <Divider />
