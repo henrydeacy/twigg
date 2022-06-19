@@ -7,6 +7,7 @@ import { Photos } from "./profile/photos/photos-screen";
 import { AboutYou } from "./profile/about-you/about-you-screen";
 import { colors } from "./colors";
 import { setCustomText } from 'react-native-global-props'
+import { Provider } from "react-native-paper";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +23,7 @@ setCustomText(customTextProps)
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <Provider><NavigationContainer>
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
@@ -32,7 +33,6 @@ export default function App() {
           headerTintColor: colors.white,
           headerTitleStyle: {
             fontWeight: "bold",
-            fontFamily: 'Nexa'
           },
         }}
       >
@@ -42,6 +42,6 @@ export default function App() {
         <Stack.Screen name="About me" component={AboutMe} />
         <Stack.Screen name="About you" component={AboutYou} />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer></Provider>
   );
 }
