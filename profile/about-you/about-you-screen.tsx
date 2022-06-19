@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Text, StyleSheet, View } from "react-native";
+import { colors } from "../../colors";
 
 export function AboutYou({ navigation }: any) {
   return (
@@ -14,7 +15,7 @@ export function AboutYou({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },

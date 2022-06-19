@@ -1,11 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { colors } from "../colors";
 
 export function Welcome({ navigation }: any) {
   return (
     <View style={styles.container}>
-      <Text>Welcome to toda!</Text>
+      <Text>Welcome to twigg!</Text>
       <Button
         title="Get started"
         onPress={() => navigation.navigate("Profile")}
@@ -18,7 +19,7 @@ export function Welcome({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },

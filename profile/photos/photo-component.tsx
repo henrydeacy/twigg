@@ -8,6 +8,7 @@ import {
   View,
 
 } from "react-native";
+import { colors } from "../../colors";
 
 interface PhotoComponentProps {
     photos: boolean[] | undefined
@@ -32,7 +33,7 @@ export function PhotoComponent (props: PhotoComponentProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.pink,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -50,13 +51,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 30,
     fontSize: 20,
-    fontStyle: { color: "#fff" },
-    backgroundColor: "#225555",
+    fontStyle: { color: colors.white },
+    backgroundColor: colors.green,
     borderRadius: 8,
     display: 'flex',
     alignItems: "center"
   },
  deleteText:
-  { color:"#fff",
+  { color: colors.white,
     textAlignVertical: 'center'}
 });

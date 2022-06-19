@@ -1,0 +1,1 @@
+export const colors = {green: "#27c37d", pink: "#dbc3e7", white: "#ffffff"}

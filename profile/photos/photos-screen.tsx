@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../../colors";
 import { PhotoComponent } from "./photo-component";
 
 export function Photos({ navigation }: any) {
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -60,13 +61,13 @@ const styles = StyleSheet.create({
     width: 50,
     height: 30,
     fontSize: 20,
-    fontStyle: { color: "#fff" },
-    backgroundColor: "#225555",
+    fontStyle: { color: colors.white },
+    backgroundColor: colors.green,
     borderRadius: 8,
     display: 'flex',
     alignItems: "center"
   },
   plusText:
-  { color:"#fff",
+  { color: colors.white,
     textAlignVertical: 'center'}
 });

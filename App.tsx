@@ -5,6 +5,7 @@ import { Profile } from "./profile/profile-screen";
 import { AboutMe } from "./profile/about-me/about-me-screen";
 import { Photos } from "./profile/photos/photos-screen";
 import { AboutYou } from "./profile/about-you/about-you-screen";
+import { colors } from "./colors";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,9 +16,9 @@ export default function App() {
         initialRouteName="Welcome"
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#225555",
+            backgroundColor: colors.green,
           },
-          headerTintColor: "#fff",
+          headerTintColor: colors.white,
           headerTitleStyle: {
             fontWeight: "bold",
           },
