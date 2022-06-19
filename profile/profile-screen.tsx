@@ -23,7 +23,7 @@ export function Profile({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.pink,
     alignItems: "center",
     justifyContent: "center",
   },
