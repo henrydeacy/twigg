@@ -4,8 +4,8 @@ import {
   StyleSheet,
   View,
   TextInput,
-
 } from "react-native";
+import { DropdownMenu } from 'react-native-dropdown-menu';
 import { colors } from "../../colors";
 
 interface AboutMeComponentProps {
@@ -17,6 +17,7 @@ export function AboutMeComponent (props: AboutMeComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
   return (
     <View style={styles.container}>
+      <DropdownMenu/>
       <TextInput multiline={true} style={styles.aboutMe}
     placeholder="Add your answer here"/>
     </View>

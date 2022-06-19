@@ -22,6 +22,7 @@
     "react-dom": "^18.1.0",
     "react-native": "0.68.2",
     "react-native-cli": "^2.0.1",
+    "react-native-dropdown-menu": "^2.0.0",
     "react-native-fs": "^2.20.0",
     "react-native-global-props": "^1.1.5",
     "react-native-image-picker": "^4.8.3",
