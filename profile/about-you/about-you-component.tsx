@@ -21,7 +21,8 @@ export function AboutYouComponent (props: AboutYouComponentProps) {
   const [isOpen, setIsOpen] = useState(false)
   const openMenu = () => {setIsOpen(true)}
   const closeMenu = () => {setIsOpen(false)}
-  const [selectedQuestion, setSelectedQuestion] = useState('Select a question')
+  const questionsList = ["You're exactly my type if...", "I'm looking for someone who...", "For our first date let's...", "A green flag for me is...", "A red flag for me is...", "My family will love you if...", "Tell me about a time you...", "We'll be a good match if..."]
+    const [selectedQuestion, setSelectedQuestion] = useState(questionsList[0])
   return (
     <View style={styles.container}>
     <Menu
@@ -30,12 +31,12 @@ export function AboutYouComponent (props: AboutYouComponentProps) {
       onDismiss={closeMenu}
       anchor={<TouchableOpacity style={styles.questionBar}onPress={
        openMenu}><Text>{selectedQuestion}</Text></TouchableOpacity>}>
-      <Menu.Item style={styles.questionBar} onPress={() => {setSelectedQuestion("Question1"); closeMenu()}} title="Question1" />
-      <Menu.Item style={styles.questionBar} onPress={() => {setSelectedQuestion("Question2"); closeMenu()}} title="Question2" />
-      <Menu.Item style={styles.questionBar} onPress={() => {setSelectedQuestion("Question3"); closeMenu()}} title="Question3" />
+        {questionsList.map((question) => 
+        <Menu.Item style={styles.questionBar} key={question} onPress={() => {setSelectedQuestion(question); closeMenu()}} title={question} />)}
     </Menu>
   <TextInput multiline={true} style={styles.aboutYou}
   placeholder="Add your answer here"/>
+  <TouchableOpacity onPress={props.aboutYous ? ()=> {props.setAboutYous(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
 </View>
   );
 }
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   aboutYou: {
     width: 360,
-    height: 320,
+    height: 60,
     borderRadius: 4,
     margin: 10,
     alignItems: "center",
@@ -67,5 +68,8 @@ questionBar: {
   borderRadius: 4,
   display: "flex",
   alignItems: "center",
-}
+},
+deleteText:
+{ color: colors.white,
+  textAlignVertical: 'center'}
 });
