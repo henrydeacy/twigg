@@ -8,7 +8,7 @@ import {
   View,
 
 } from "react-native";
-import ImagePicker from 'react-native-image-crop-picker';
+import * as ImagePicker from 'expo-image-picker';
 import { colors } from "../../colors";
 
 interface PhotoComponentProps {
@@ -18,22 +18,33 @@ interface PhotoComponentProps {
 
 export function PhotoComponent (props: PhotoComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
-    const choosePhotoFromLibrary = ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true
-    }).then(image => {
-      console.log(image);
+    const [image, setImage] = useState('');
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
     });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
   return (
     <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
       style={styles.photo}
       source={{
-        uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
+        uri: image,
       }}
     /></TouchableOpacity>{imagePressed && <View style={styles.buttons}><View style={styles.delete}>
     <TouchableOpacity onPress={props.photos ? ()=> {props.setPhotos(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity></View><View style={styles.delete}>
-    <TouchableOpacity onPress={async ()=>{}}><Text style={styles.deleteText}>Edit</Text></TouchableOpacity>
+    <TouchableOpacity onPress={pickImage}><Text style={styles.deleteText}>Edit</Text></TouchableOpacity>
   </View></View>}</View>
   );
 }
