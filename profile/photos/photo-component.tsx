@@ -8,6 +8,7 @@ import {
   View,
 
 } from "react-native";
+import ImagePicker from 'react-native-image-crop-picker';
 import { colors } from "../../colors";
 
 interface PhotoComponentProps {
@@ -17,15 +18,23 @@ interface PhotoComponentProps {
 
 export function PhotoComponent (props: PhotoComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
+    const choosePhotoFromLibrary = ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true
+    }).then(image => {
+      console.log(image);
+    });
   return (
     <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
       style={styles.photo}
       source={{
         uri: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/03/GettyImages-1092658864_hero-1024x575.jpg?w=1155&h=1528",
       }}
-    /></TouchableOpacity>{imagePressed && <View style={styles.delete}>
-    <TouchableOpacity onPress={props.photos ? ()=> {props.setPhotos(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity>
-  </View>}</View>
+    /></TouchableOpacity>{imagePressed && <View style={styles.buttons}><View style={styles.delete}>
+    <TouchableOpacity onPress={props.photos ? ()=> {props.setPhotos(undefined)}: ()=> null}><Text style={styles.deleteText}>Delete</Text></TouchableOpacity></View><View style={styles.delete}>
+    <TouchableOpacity onPress={async ()=>{}}><Text style={styles.deleteText}>Edit</Text></TouchableOpacity>
+  </View></View>}</View>
   );
 }
 
@@ -50,7 +59,7 @@ const styles = StyleSheet.create({
   delete: {
     marginBottom: 30,
     padding: 5,
-    width: 50,
+    width: 60,
     height: 30,
     fontSize: 20,
     fontStyle: { color: colors.white },
@@ -58,9 +67,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     display: 'flex',
     alignItems: "center",
-    position: "absolute"
   },
  deleteText:
   { color: colors.white,
-    textAlignVertical: 'center'}
+    textAlignVertical: 'center'},
+  buttons: {display: 'flex', alignItems: 'center', flexDirection: 'column', position: 'absolute'}
 });
