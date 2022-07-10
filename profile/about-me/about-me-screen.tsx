@@ -11,7 +11,6 @@ export function AboutMe({ navigation }: any) {
   );
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Let people learn a bit about you!</Text>
       <FlatList
         data={aboutMes}
         renderItem={renderItem}

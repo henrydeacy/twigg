@@ -11,7 +11,6 @@ export function AboutYou({ navigation }: any) {
 );
   return (
       <SafeAreaView style={styles.container}>
-      <Text>Let potential matches know whether they're your type!</Text>
       <FlatList
         data={aboutYous}
         renderItem={renderItem}
