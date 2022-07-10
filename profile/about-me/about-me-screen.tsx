@@ -16,7 +16,7 @@ export function AboutMe({ navigation }: any) {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
-      {(!aboutMes || aboutMes.length < 5) && (
+      {(!aboutMes || aboutMes.length < 8) && (
         <View style={styles.plus}>
           <TouchableOpacity
             onPress={() => {

@@ -16,7 +16,7 @@ export function AboutYou({ navigation }: any) {
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
       />
-      {(!aboutYous || aboutYous.length < 5) && (
+      {(!aboutYous || aboutYous.length < 8) && (
         <View style={styles.plus}>
           <TouchableOpacity
             onPress={() => {
