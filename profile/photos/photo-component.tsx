@@ -17,24 +17,22 @@ interface PhotoComponentProps {
 }
 
 export function PhotoComponent (props: PhotoComponentProps) {
-    const [imagePressed, setImagePressed] = useState(false)
-    const [image, setImage] = useState('%E2%96%A1');
-
+  const [imagePressed, setImagePressed] = useState(false)
+  const [image, setImage] = useState('000000');
+  
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+    };
 
-    console.log(result);
-
-    if (!result.cancelled) {
-      setImage(result.uri);
-    }
-  };
 
   return (
     <View style={styles.container}><TouchableOpacity onPress={()=>{setImagePressed(!imagePressed)}}><Image
