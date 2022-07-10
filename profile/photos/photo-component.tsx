@@ -18,7 +18,7 @@ interface PhotoComponentProps {
 
 export function PhotoComponent (props: PhotoComponentProps) {
     const [imagePressed, setImagePressed] = useState(false)
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState('%E2%96%A1');
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
