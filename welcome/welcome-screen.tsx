@@ -5,7 +5,7 @@ import { Alert, Button, StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-paper";
 import { colors } from "../colors";
 
-export function Welcome({ navigation, signIn: signInCb  }) {
+export function Welcome({ navigation, signIn: signInCb  }: any) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')

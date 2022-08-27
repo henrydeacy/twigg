@@ -18,11 +18,6 @@ export function Photos({ navigation }: any) {
   );
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={photos}
-        renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
-      />
       {(!photos || photos.length < 8) && (
         <View style={styles.plus}>
           <TouchableOpacity
@@ -33,6 +28,11 @@ export function Photos({ navigation }: any) {
           ><Text style={styles.plusText}>Add</Text></TouchableOpacity>
         </View>
       )}
+      <FlatList
+        data={photos}
+        renderItem={renderItem}
+        showsHorizontalScrollIndicator={false}
+      />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
