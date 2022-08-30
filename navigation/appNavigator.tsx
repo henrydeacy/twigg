@@ -1,14 +1,14 @@
 import React from 'react';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { setCustomText } from 'react-native-global-props';
 import { colors } from '../colors';
-import { Profile } from '../profile/profile-screen';
-import { Photos } from '../profile/photos/photos-screen';
-import { AboutMe } from '../profile/about-me/about-me-screen';
-import { AboutYou } from '../profile/about-you/about-you-screen';
 import { useNavigation } from '@react-navigation/native';
+import ProfileNavigator from './profileNavigator';
+import FeedNavigator from './feedNavigator';
+import MyMatchesNavigator from './myMatchesNavigator';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
 
 const customTextProps = {
   style: {
@@ -23,7 +23,7 @@ setCustomText(customTextProps)
 export default function App({signOut}: any) {
   const navigation = useNavigation()
     return (
-        <Stack.Navigator
+        <Tab.Navigator
           initialRouteName="Profile"
           screenOptions={{
             headerStyle: {
@@ -35,12 +35,15 @@ export default function App({signOut}: any) {
             },
           }}
         >
-          <Stack.Screen name="Profile">
-          {() => <Profile signOut={signOut} navigation={navigation} />}
-          </Stack.Screen>
-          <Stack.Screen name="Photos" component={Photos} />
-          <Stack.Screen name="About me" component={AboutMe} />
-          <Stack.Screen name="About you" component={AboutYou} />
-        </Stack.Navigator>
+          <Tab.Screen name="Profile">
+            {() => <ProfileNavigator signOut={signOut} navigation={navigation} />}
+          </Tab.Screen>
+          <Tab.Screen name="Feed">
+            {() => <FeedNavigator signOut={signOut} navigation={navigation} />}
+          </Tab.Screen>
+          <Tab.Screen name="My matches">
+            {() => <MyMatchesNavigator signOut={signOut} navigation={navigation} />}
+          </Tab.Screen>
+        </Tab.Navigator>
     );
   }

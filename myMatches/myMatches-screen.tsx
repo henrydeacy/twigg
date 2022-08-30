@@ -3,19 +3,10 @@ import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { colors } from "../colors";
 
-export function Profile({ navigation, signOut }: any) {
+export function MyMatches({ navigation, signOut }: any) {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
-      <Button title="Photos" onPress={() => navigation.navigate("Photos")} />
-      <Button
-        title="About you"
-        onPress={() => navigation.navigate("About you")}
-      />
-      <Button
-        title="About me"
-        onPress={() => navigation.navigate("About me")}
-      />
+        <Text>My matches</Text>
       <StatusBar style="auto" />
       <Button onPress={() => signOut()} title="Sign out" />
     </View>

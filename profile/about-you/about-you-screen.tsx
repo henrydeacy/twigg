@@ -11,11 +11,6 @@ export function AboutYou({ navigation }: any) {
 );
   return (
       <SafeAreaView style={styles.container}>
-      <FlatList
-        data={aboutYous}
-        renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
-      />
       {(!aboutYous || aboutYous.length < 8) && (
         <View style={styles.plus}>
           <TouchableOpacity
@@ -24,6 +19,11 @@ export function AboutYou({ navigation }: any) {
             }}
        
           ><Text style={styles.plusText}>Add</Text></TouchableOpacity>
+            <FlatList
+              data={aboutYous}
+              renderItem={renderItem}
+              showsHorizontalScrollIndicator={false}
+            />
         </View>
       )}
       <StatusBar style="auto" />
