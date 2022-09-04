@@ -17,19 +17,22 @@ export function MyMatches({ navigation, signOut }: any) {
     const attributes = await Auth.currentAuthenticatedUser()
     setUserAttributes({username: attributes.username})}
     fetchAttributes()
-    setMessages([
-      {
-          _id: 1,
-          text: `Hello ${userAttributes.username}`,
-          createdAt: new Date(),
-          user: {
-              _id: 2,
-              name: 'React Native',
-          },
-      },
-  ])
+
   }, []
   )
+
+  useEffect(()=>{ 
+    setMessages([
+    {
+        _id: 1,
+        text: `Hello ${userAttributes.username}`,
+        createdAt: new Date(),
+        user: {
+            _id: 2,
+            name: 'React Native',
+        },
+    },
+])},[userAttributes])
   const onSend = useCallback((messages = []) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
 }, []);
