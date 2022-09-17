@@ -1,0 +1,589 @@
+{
+  "service": {
+    "service": "syncService",
+    "serviceObject": {
+      "name": "syncService"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs8.10",
+      "stage": "dev",
+      "region": "eu-west-2",
+      "versionFunctions": true,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ServerlessDeploymentBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "ServerlessDeploymentBucket"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Action": "s3:*",
+                    "Effect": "Deny",
+                    "Principal": "*",
+                    "Resource": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":s3:::",
+                            {
+                              "Ref": "ServerlessDeploymentBucket"
+                            },
+                            "/*"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":s3:::",
+                            {
+                              "Ref": "ServerlessDeploymentBucket"
+                            }
+                          ]
+                        ]
+                      }
+                    ],
+                    "Condition": {
+                      "Bool": {
+                        "aws:SecureTransport": false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "UserOnboardingLambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/syncService-dev-UserOnboardingLambda"
+            }
+          },
+          "UserOnboardingLambdaLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/syncService/dev/1662821459499-2022-09-10T14:50:59.499Z/syncService.zip"
+              },
+              "Handler": "cognitoToDynamo.handler",
+              "Runtime": "nodejs8.10",
+              "FunctionName": "syncService-dev-UserOnboardingLambda",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "TABLE_NAME": "Users",
+                  "REGION": "eu-west-2"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "CustomUserOnboardingRole",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "UserOnboardingLambdaLogGroup",
+              "CustomUserOnboardingRole"
+            ]
+          },
+          "UserOnboardingLambdaLambdaVersionx9KbGSP6rm6xZSHsBiNfKjgsdJydfMp6TNjNEtAfP4Y": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UserOnboardingLambdaLambdaFunction"
+              },
+              "CodeSha256": "qzq63VoSy4wuwrlFxZDoQyUCXeaSU55woCU5YcAxnYA="
+            }
+          },
+          "UserOnboardingLambdaCustomCognitoUserPool1": {
+            "Type": "Custom::CognitoUserPool",
+            "Version": 1,
+            "DependsOn": [
+              "UserOnboardingLambdaLambdaFunction",
+              "CustomDashresourceDashexistingDashcupLambdaFunction"
+            ],
+            "Properties": {
+              "ServiceToken": {
+                "Fn::GetAtt": [
+                  "CustomDashresourceDashexistingDashcupLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "FunctionName": "syncService-dev-UserOnboardingLambda",
+              "UserPoolName": "twigg_standard_users",
+              "UserPoolConfigs": [
+                {
+                  "Trigger": "PostConfirmation"
+                }
+              ]
+            }
+          },
+          "IamRoleCustomResourcesLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "dev",
+                        "syncService",
+                        "custom-resources-lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Resource": "*",
+                        "Action": [
+                          "cognito-idp:ListUserPools",
+                          "cognito-idp:DescribeUserPool",
+                          "cognito-idp:UpdateUserPool"
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Resource": {
+                          "Fn::Sub": "arn:${AWS::Partition}:lambda:*:*:function:syncService-dev-UserOnboardingLambda"
+                        },
+                        "Action": [
+                          "lambda:AddPermission",
+                          "lambda:RemovePermission"
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Resource": {
+                          "Fn::Sub": "arn:${AWS::Partition}:iam::*:role/*"
+                        },
+                        "Action": [
+                          "iam:PassRole"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "CustomDashresourceDashexistingDashcupLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/syncService/dev/1662821459499-2022-09-10T14:50:59.499Z/custom-resources.zip"
+              },
+              "FunctionName": "syncService-dev-custom-resource-existing-cup",
+              "Handler": "cognito-user-pool/handler.handler",
+              "MemorySize": 1024,
+              "Runtime": "nodejs14.x",
+              "Timeout": 180,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleCustomResourcesLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "IamRoleCustomResourcesLambdaExecution"
+            ]
+          },
+          "CustomUserOnboardingRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "RoleName": "CustomUserOnboardingRole",
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": "sts:AssumeRole"
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": "CustomCloudWatchLogsPolicy",
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogGroup",
+                          "logs:CreateLogStream",
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Join": [
+                              ":",
+                              [
+                                "arn:aws:logs",
+                                {
+                                  "Ref": "AWS::Region"
+                                },
+                                {
+                                  "Ref": "AWS::AccountId"
+                                },
+                                "log-group:/aws/lambda/*:*:*"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "PolicyName": "CustomUserOnboardingPolicy",
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "dynamodb:PutItem"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Join": [
+                              ":",
+                              [
+                                "arn:aws:dynamodb",
+                                {
+                                  "Ref": "AWS::Region"
+                                },
+                                {
+                                  "Ref": "AWS::AccountId"
+                                },
+                                "table/Users"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            },
+            "Export": {
+              "Name": "sls-syncService-dev-ServerlessDeploymentBucketName"
+            }
+          },
+          "UserOnboardingLambdaLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UserOnboardingLambdaLambdaVersionx9KbGSP6rm6xZSHsBiNfKjgsdJydfMp6TNjNEtAfP4Y"
+            },
+            "Export": {
+              "Name": "sls-syncService-dev-UserOnboardingLambdaLambdaFunctionQualifiedArn"
+            }
+          }
+        }
+      },
+      "coreCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "ServerlessDeploymentBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketEncryption": {
+                "ServerSideEncryptionConfiguration": [
+                  {
+                    "ServerSideEncryptionByDefault": {
+                      "SSEAlgorithm": "AES256"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ServerlessDeploymentBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+              "Bucket": {
+                "Ref": "ServerlessDeploymentBucket"
+              },
+              "PolicyDocument": {
+                "Statement": [
+                  {
+                    "Action": "s3:*",
+                    "Effect": "Deny",
+                    "Principal": "*",
+                    "Resource": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":s3:::",
+                            {
+                              "Ref": "ServerlessDeploymentBucket"
+                            },
+                            "/*"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":s3:::",
+                            {
+                              "Ref": "ServerlessDeploymentBucket"
+                            }
+                          ]
+                        ]
+                      }
+                    ],
+                    "Condition": {
+                      "Bool": {
+                        "aws:SecureTransport": false
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": {
+              "Ref": "ServerlessDeploymentBucket"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "custom": {
+      "myRegion": "eu-west-2",
+      "myDDB": "Users",
+      "myPool": "twigg_standard_users"
+    },
+    "pluginsData": {},
+    "functions": {
+      "UserOnboardingLambda": {
+        "handler": "cognitoToDynamo.handler",
+        "events": [
+          {
+            "cognitoUserPool": {
+              "pool": "twigg_standard_users",
+              "trigger": "PostConfirmation",
+              "existing": true
+            }
+          }
+        ],
+        "role": "CustomUserOnboardingRole",
+        "environment": {
+          "TABLE_NAME": "Users",
+          "REGION": "eu-west-2"
+        },
+        "name": "syncService-dev-UserOnboardingLambda",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs8.10",
+        "vpc": {},
+        "versionLogicalId": "UserOnboardingLambdaLambdaVersionx9KbGSP6rm6xZSHsBiNfKjgsdJydfMp6TNjNEtAfP4Y"
+      }
+    },
+    "resources": {
+      "Resources": {
+        "CustomUserOnboardingRole": {
+          "Type": "AWS::IAM::Role",
+          "Properties": {
+            "RoleName": "CustomUserOnboardingRole",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "lambda.amazonaws.com"
+                    ]
+                  },
+                  "Action": "sts:AssumeRole"
+                }
+              ]
+            },
+            "Policies": [
+              {
+                "PolicyName": "CustomCloudWatchLogsPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "logs:CreateLogGroup",
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents"
+                      ],
+                      "Resource": [
+                        {
+                          "Fn::Join": [
+                            ":",
+                            [
+                              "arn:aws:logs",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              {
+                                "Ref": "AWS::AccountId"
+                              },
+                              "log-group:/aws/lambda/*:*:*"
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "PolicyName": "CustomUserOnboardingPolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "dynamodb:PutItem"
+                      ],
+                      "Resource": [
+                        {
+                          "Fn::Join": [
+                            ":",
+                            [
+                              "arn:aws:dynamodb",
+                              {
+                                "Ref": "AWS::Region"
+                              },
+                              {
+                                "Ref": "AWS::AccountId"
+                              },
+                              "table/Users"
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless.yml",
+    "initialServerlessConfig": {
+      "service": "syncService",
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      },
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "functions": {
+        "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
+      }
+    },
+    "layers": {},
+    "isDashboardMonitoringPreconfigured": false,
+    "artifact": "/Users/henrydeacy/twigg/amplify/functions/.serverless/syncService.zip"
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/syncService/dev/1662821459499-2022-09-10T14:50:59.499Z",
+    "artifact": "syncService.zip"
+  }
+}
