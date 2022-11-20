@@ -3,7 +3,7 @@ import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { colors } from "../colors";
 
-export function Profile({ navigation, signOut }: any) {
+export function MyProfile({ navigation, signOut }: any) {
   return (
     <View style={styles.container}>
       <Text>Profile</Text>
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     alignItems: "center",
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 });

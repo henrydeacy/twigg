@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
   FlatList,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../../colors";
@@ -14,7 +14,7 @@ import { PhotoComponent } from "./photo-component";
 export function Photos({ navigation }: any) {
   const [photos, setPhotos] = useState<boolean[]>();
   const renderItem = () => (
-<PhotoComponent photos={photos} setPhotos={setPhotos}/>
+    <PhotoComponent photos={photos} setPhotos={setPhotos} />
   );
   return (
     <SafeAreaView style={styles.container}>
@@ -24,8 +24,9 @@ export function Photos({ navigation }: any) {
             onPress={() => {
               photos ? setPhotos([...photos, true]) : setPhotos([true]);
             }}
-       
-          ><Text style={styles.plusText}>Add</Text></TouchableOpacity>
+          >
+            <Text style={styles.plusText}>Add</Text>
+          </TouchableOpacity>
         </View>
       )}
       <FlatList
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   photo: {
     width: 150,
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     margin: 10,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   plus: {
     marginBottom: 30,
@@ -63,10 +64,8 @@ const styles = StyleSheet.create({
     fontStyle: { color: colors.white },
     backgroundColor: colors.green,
     borderRadius: 8,
-    display: 'flex',
+    display: "flex",
     alignItems: "center"
   },
-  plusText:
-  { color: colors.white,
-    textAlignVertical: 'center'}
+  plusText: { color: colors.white, textAlignVertical: "center" }
 });
